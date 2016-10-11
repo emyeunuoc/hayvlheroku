@@ -1,0 +1,100 @@
+	<form novalidate name="postForm">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="basic-addon1">Tieu de</span>
+			<div class="row">
+				<div class="col-xs-12 col-sm-9 col-md-10 noPadding-right input-group-lg tooltip-relation">
+					<div class="my-tooltip" ng-show="postForm.$submitted && postForm.inputTitle.$invalid">
+						<span class="my-tooltiptext">
+								<p class="notify" ng-if="postForm.inputTitle.$error.required ">
+									{{postForm.inputTitle.$error.required ? 'Phai nhap Title ' : ''}}
+								</p>	
+								<p class="notify" ng-if="postForm.inputTitle.$error.minlength ">
+									{{postForm.inputTitle.$error.minlength ? 'Title phai lon hon 10 ki tu ' : ''}}
+								</p>
+								<p class="notify" ng-if="postForm.inputTitle.$error.maxlength ">
+									{{postForm.inputTitle.$error.maxlength ? 'Title phai nho hon 250 ki tu ' : ''}}
+								</p>
+						</span>
+					</div>
+					<input name="inputTitle" type="text" class="form-control {{postForm.$submitted &&postForm.inputTitle.$invalid ? 'input-err' : ''}}" placeholder="Title" required ng-maxlength="250" ng-minlength="10" ng-model="title" ng-check-input>
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-2 noPadding-right input-group-lg tooltip-relation">
+					<select class="form-control {{postForm.$submitted &&postForm.inputCategory.$invalid ? 'input-err' : ''}}" ng-model="category" name="inputCategory" required ng-options="pre.id as pre.title for pre in preCategory">
+					</select>
+				</div>
+			</div>
+		</div>
+		<h4>Mo ta</h4>
+		<div class="tooltip-relation">
+			<div class="my-tooltip" ng-show="postForm.$submitted && postForm.inputDescription.$invalid">
+				<span class="my-tooltiptext">
+						<p class="notify" ng-if="postForm.inputDescription.$error.required ">
+							{{postForm.inputDescription.$error.required ? 'Phai nhap mo ta ' : ''}}
+						</p>
+				</span>
+			</div>
+			<textarea name="inputDescription" class="form-control {{postForm.$submitted &&postForm.inputDescription.$invalid ? 'input-err' : ''}}" rows="3"  ng-check-input required ng-model="description"></textarea>
+		</div>
+		<h4>Anh bia</h4>
+		<div class="row">
+			<div class="col-xs-6">
+				<input class="form-control" placeholder="link anh" ng-model="coverImg">
+			</div>
+			<div class="col-xs-6" style="word-break: break-all">
+				<img class="img-responsive" src="{{coverImg}}" alt="{{title}}">
+			</div>
+		</div>
+		<h4>Link video main</h4>
+		<div>
+			<textarea name="inputDescription" class="form-control" rows="1" ng-model="videoLink"></textarea>
+		</div>
+		<h4>Noi dung</h4>
+		<div trumbowyg-ng ng-model="content" editor-config="{btns: [['viewHTML'],['removeformat'],['formatting'],'btnGrp-semantic',['superscript', 'subscript'], ['link'],['insertImage'],'btnGrp-justify','btnGrp-lists',['horizontalRule'],['fullscreen']]}">
+		</div>
+		<button class="btn btn-success" type="submit" ng-click="submit(postForm.$valid)">Luu bai viet</button>
+		<button class="btn btn-primary" ng-click="watchDemo()">Xem truoc</button>
+		<button class="btn btn-danger" ng-click="notifyFn('preCancel')" >Huy bo</button>
+		
+	</form>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modaPostAddNotify">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Thong bao</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert">{{notify.message}}</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" ng-if="notify.confirm" ng-click="notifyFn(notify.confirm)">Xac nhan</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="back()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="watchDemo" ng-if="postForm.$valid">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Bai viet</h4>
+				</div>
+				<div class="modal-body watchDemo">
+						<h1>{{title}}</h1>
+						<div>
+							<img class="img-responsive" src="{{coverImg}}" alt="{{title}}">
+						</div>
+						<hr>
+						<div ng-if="videoLink">
+							<link-video link="videoLink"></link-video>
+						</div>
+						<h4>{{description}}</h4>
+					 	<div ng-bind-html="content | to_trusted"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>

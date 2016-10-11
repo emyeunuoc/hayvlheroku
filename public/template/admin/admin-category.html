@@ -1,0 +1,95 @@
+<div ng-controller="adminCategory">
+	<div>
+		<button ng-click="preAdd()" class="btn btn-info"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button>
+	</div>
+	<div class="table-responsive2">
+		<table class="table table-hover table-striped">
+			<tr>
+				<th>ID</th>
+				<th>title</th>
+				<th>Description</th>
+				<th>Function</th>
+			</tr>
+			<tr ng-repeat="cat in category">
+				<td><span class="label label-warning">{{cat.id}}</span></td>
+				<td><span class="label label-primary">{{cat.title}}</span></td>
+				<td>{{cat.description}}</td>
+				<td style="width: 173px;">
+					<button ng-click="preUpdate(cat.title, cat.description, cat.id)" class="btn btn-success"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+					<button ng-click="preDelete(cat.id)" class="btn btn-danger"><i class="fa fa-times fa-2x" aria-hidden="true"></i></i></button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="addUpdateModal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<form name="postForm" novalidate>
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">{{mode}}</h4>
+				</div>
+				<div class="modal-body">
+					<h4>Tieu de</h4>
+					<div class="tooltip-relation">
+						<div class="my-tooltip" ng-show="postForm.$submitted && postForm.inputTitle.$invalid">
+							<span class="my-tooltiptext">
+									<p class="notify" ng-if="postForm.inputTitle.$error.required ">
+										{{postForm.inputTitle.$error.required ? 'Phai nhap Title ' : ''}}
+									</p>	
+									<p class="notify" ng-if="postForm.inputTitle.$error.minlength ">
+										{{postForm.inputTitle.$error.minlength ? 'Title phai lon hon 1 ki tu ' : ''}}
+									</p>
+									<p class="notify" ng-if="postForm.inputTitle.$error.maxlength ">
+										{{postForm.inputTitle.$error.maxlength ? 'Title phai nho hon 50 ki tu ' : ''}}
+									</p>
+							</span>
+						</div>
+						<input name="inputTitle" type="text" class="form-control {{postForm.$submitted &&postForm.inputTitle.$invalid ? 'input-err' : ''}}" placeholder="Title" required ng-maxlength="50" ng-minlength="1" ng-model="title" ng-check-input>
+					</div>
+					<h4>Mo ta</h4>
+					<div class="tooltip-relation">
+						<div class="my-tooltip" ng-show="postForm.$submitted && postForm.inputDescription.$invalid">
+							<span class="my-tooltiptext">
+									<p class="notify" ng-if="postForm.inputDescription.$error.required ">
+										{{postForm.inputDescription.$error.required ? 'Phai nhap Description ' : ''}}
+									</p>	
+									<p class="notify" ng-if="postForm.inputDescription.$error.minlength ">
+										{{postForm.inputDescription.$error.minlength ? 'Title phai lon hon 5 ki tu ' : ''}}
+									</p>
+									<p class="notify" ng-if="postForm.inputDescription.$error.maxlength ">
+										{{postForm.inputDescription.$error.maxlength ? 'Title phai nho hon 250 ki tu ' : ''}}
+									</p>
+							</span>
+						</div>
+						<textarea name="inputDescription" type="text" class="form-control {{postForm.$submitted &&postForm.inputDescription.$invalid ? 'input-err' : ''}}" placeholder="Description" required ng-maxlength="250" ng-minlength="5" ng-model="description" ng-check-input rows="3"></textarea>
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" ng-click="clear()" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button ng-click="submit(mode,postForm.$valid)" type="submit" data-dismiss="modal" class="btn btn-primary">Save</button>
+				</div>
+			</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div id="notify" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Thong bao</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-info" role="alert">{{notify}}</div>
+				</div>
+				<div class="modal-footer">
+					<button ng-if="mode" ng-click="submit(mode)" class="btn btn-danger">{{mode}}</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>

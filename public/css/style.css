@@ -1,0 +1,91 @@
+html {
+  overflow-x: hidden; }
+
+.table-responsive2 {
+  width: 100%;
+  margin-bottom: 15px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border: 1px solid #DDD;
+  -webkit-overflow-scrolling: touch; }
+
+.admin-option div {
+  text-align: center; }
+  .admin-option div a {
+    text-decoration: none;
+    display: block; }
+  .admin-option div a:hover {
+    color: #004694; }
+
+.admin-acount-icon {
+  text-align: center; }
+
+/*****TOOLTIP******/
+.disable {
+  display: none !important; }
+
+.input-err {
+  border: 1px solid red !important; }
+
+.my-tooltip {
+  position: absolute;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  top: -5px;
+  opacity: 0.98;
+  z-index: 10; }
+
+.my-tooltiptext {
+  width: 120px;
+  background-color: #0085a1;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: 0px;
+  opacity: 1;
+  transition: opacity 1s;
+  word-break: break-all; }
+  .my-tooltiptext p {
+    margin: 2px 0; }
+
+.my-tooltip .my-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 15%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #0085a1 transparent transparent   transparent; }
+
+.tooltip-relation {
+  position: relative; }
+
+/***********************************/
+.pagination-sm {
+  position: absolute;
+  right: 20px; }
+
+.relative {
+  position: relative;
+  margin-bottom: 100px; }
+
+.pointer {
+  cursor: pointer; }
+
+.modalUserDetail p {
+  margin: 5px 5px; }
+
+.noPadding {
+  padding: 0; }
+
+.noPadding-right {
+  padding-right: 0; }
+
+/*# sourceMappingURL=style.css.map */

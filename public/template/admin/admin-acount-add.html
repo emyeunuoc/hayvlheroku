@@ -1,0 +1,141 @@
+<div class="container" ng-controller="adminAddUser">
+	<form role="form" name="loginForm" novalidate >
+		<div class="form-group">
+			<label >Username</label>
+			<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputUser.$invalid">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputUser.$error.required ">
+								{{loginForm.inputUser.$error.required ? 'Phai nhap user ' : ''}}
+							</p>	
+							<p class="notify" ng-if="loginForm.inputUser.$error.minlength ">
+								{{loginForm.inputUser.$error.minlength ? 'user phai lon hon 4 ki tu ' : ''}}
+							</p>
+							<p class="notify" ng-if="loginForm.inputUser.$error.maxlength ">
+								{{loginForm.inputUser.$error.maxlength ? 'user phai nho hon 13 ki tu ' : ''}}
+							</p>
+						</span>
+					</div>
+			<input name="inputUser" type="text" class="form-control {{loginForm.$submitted &&loginForm.inputUser.$invalid ? 'input-err' : ''}}" placeholder="Username" required ng-maxlength="12" ng-minlength="5" ng-model="username" ng-check-input " >
+			</div>
+		</div>
+		<div class="form-group">
+			<label >Password</label>
+			<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputPassword.$invalid">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputPassword.$error.required ">
+								{{loginForm.inputPassword.$error.required ? 'Phai nhap password ' : ''}}
+							</p>	
+							<p class="notify" ng-if="loginForm.inputPassword.$error.minlength ">
+								{{loginForm.inputPassword.$error.minlength ? 'password phai lon hon 4 ki tu ' : ''}}
+							</p>
+							<p class="notify" ng-if="loginForm.inputPassword.$error.maxlength ">
+								{{loginForm.inputPassword.$error.maxlength ? 'password phai nho hon 13 ki tu ' : ''}}
+							</p>
+						</span>
+					</div>
+				<input name="inputPassword" type="text" class="form-control {{loginForm.$submitted &&loginForm.inputPassword.$invalid ? 'input-err' : ''}}" placeholder="Password" required ng-maxlength="12" ng-minlength="5" ng-model="password" ng-check-input >
+			</div>
+		</div>
+		<div class="form-group">
+			<label >Email</label>
+			<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputEmail.$invalid">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputEmail.$error.required ">
+								{{loginForm.inputEmail.$error.required ? 'Phai nhap email ' : ''}}
+							</p>	
+							<p class="notify" ng-if="loginForm.inputEmail.$error.minlength ">
+								{{loginForm.inputEmail.$error.minlength ? 'email phai lon hon 4 ki tu ' : ''}}
+							</p>
+							<p class="notify" ng-if="loginForm.inputEmail.$error.maxlength ">
+								{{loginForm.inputEmail.$error.maxlength ? 'email phai nho hon 13 ki tu ' : ''}}
+							</p>
+						</span>
+					</div>
+				<input name="inputEmail" type="text" class="form-control {{loginForm.$submitted &&loginForm.inputEmail.$invalid ? 'input-err' : ''}}" placeholder="Email" required ng-maxlength="12" ng-minlength="5" ng-model="email" ng-check-input >
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label >PhoneNumber</label>
+			<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputPhoneNumber.$invalid">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputPhoneNumber.$error.required ">
+								{{loginForm.inputPhoneNumber.$error.required ? 'Phai nhap PhoneNumber ' : ''}}
+							</p>	
+							<p class="notify" ng-if="loginForm.inputPhoneNumber.$error.minlength ">
+								{{loginForm.inputPhoneNumber.$error.minlength ? 'PhoneNumber phai lon hon 8 ki tu ' : ''}}
+							</p>
+							<p class="notify" ng-if="loginForm.inputPhoneNumber.$error.maxlength ">
+								{{loginForm.inputPhoneNumber.$error.maxlength ? 'PhoneNumber phai nho hon 12 ki tu ' : ''}}
+							</p>
+						</span>
+					</div>
+				<input name="inputPhoneNumber" type="text" class="form-control {{loginForm.$submitted &&loginForm.inputPhoneNumber.$invalid ? 'input-err' : ''}}" placeholder="PhoneNumber" required ng-maxlength="11" ng-minlength="9" ng-model="telephone" ng-check-input >
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label >Age</label>
+			<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputAge.$invalid ">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputAge.$error.required ">
+								{{loginForm.inputAge.$error.required ? 'Phai nhap age ' : ''}}
+							</p>
+						</span>
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputAge.$error.max ">
+								{{loginForm.inputAge.$error.max ? 'Tuoi phai nho hon 100 ' : ''}}
+							</p>
+						</span>
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputAge.$error.min ">
+								{{loginForm.inputAge.$error.min ? 'Tuoi phai lon hon 0 ' : ''}}
+							</p>
+						</span>
+					</div>
+				<input name="inputAge" type="number" class="form-control {{loginForm.$submitted &&loginForm.inputAge.$invalid ? 'input-err' : ''}}" placeholder="age" required ng-model="age" ng-check-input min="1" max="99">
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Gender</label>
+			<div class="tooltip-relation">
+				<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputGender.$invalid ">
+					<span class="my-tooltiptext">
+						<p class="notify" ng-if="loginForm.inputGender.$error.required ">
+							{{loginForm.inputGender.$error.required ? 'Phai nhap gender ' : ''}}
+
+						</p>
+					</span>
+				</div>
+				<select required name="inputGender" class="form-control {{loginForm.$submitted &&loginForm.inputGender.$invalid ? 'input-err' : ''}}" ng-model="gender" >
+					<option value="male" selected>Male</option>
+					<option value="female">Female</option>
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-default " ng-click="submitForm(loginForm.$valid)">Submit</button>
+	</form>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalUserAddNotify">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Thong bao</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert">{{notify.message}}</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" ng-if="notify.confirm" ng-click="deleteUser(notify.confirm)">Xac nhan</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+</div>

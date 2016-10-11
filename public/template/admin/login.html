@@ -1,0 +1,63 @@
+<div class="container" ng-controller="adminLogin">
+	<div class="col-xs-1 col-sm-3 col-md-4"></div>
+	<div class="col-xs-10 col-sm-6 col-md-4">
+		<form novalidate name="loginForm" >
+			<div class="form-group">
+				<label for="exampleInputEmail1">Username</label>
+				<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputUser.$invalid">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputUser.$error.required ">
+								{{loginForm.inputUser.$error.required ? 'Phai nhap user ' : ''}}
+							</p>	
+							<p class="notify" ng-if="loginForm.inputUser.$error.minlength ">
+								{{loginForm.inputUser.$error.minlength ? 'user phai lon hon 4 ki tu ' : ''}}
+							</p>
+							<p class="notify" ng-if="loginForm.inputUser.$error.maxlength ">
+								{{loginForm.inputUser.$error.maxlength ? 'user phai nho hon 13 ki tu ' : ''}}
+							</p>
+						</span>
+					</div>
+					<input name="inputUser" type="text" class="form-control {{loginForm.$submitted &&loginForm.inputUser.$invalid ? 'input-err' : ''}}" placeholder="user" required ng-maxlength="12" ng-minlength="5" ng-model="inputUser" ng-check-input " >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Password</label>
+				<div class="tooltip-relation">
+					<div class="my-tooltip" ng-show="loginForm.$submitted && loginForm.inputPassword.$invalid">
+						<span class="my-tooltiptext">
+							<p class="notify" ng-if="loginForm.inputPassword.$error.required ">
+								{{loginForm.inputPassword.$error.required ? 'Phai nhap password ' : ''}}
+							</p>	
+							<p class="notify" ng-if="loginForm.inputPassword.$error.minlength ">
+								{{loginForm.inputPassword.$error.minlength ? 'password phai lon hon 4 ki tu ' : ''}}
+							</p>
+							<p class="notify" ng-if="loginForm.inputPassword.$error.maxlength ">
+								{{loginForm.inputPassword.$error.maxlength ? 'password phai nho hon 13 ki tu ' : ''}}
+							</p>
+						</span>
+					</div>
+					<input name="inputPassword" type="password" class="form-control {{loginForm.$submitted &&loginForm.inputPassword.$invalid ? 'input-err' : ''}}" placeholder="Password" required ng-maxlength="12" ng-minlength="5" ng-model="inputPassword" ng-check-input >
+				</div>
+			</div>
+			<button type="submit" class="btn btn-default" ng-click="submit()">Login</button>
+			
+			<div class="modal fade" tabindex="-1" role="dialog" id="loginNotify">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="alert alert-danger" role="alert" ng-show="loginErr">
+								<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								<span class="sr-only">Error:</span>
+								{{loginErr}}
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div>
+		</form>
+	</div>
+</div>

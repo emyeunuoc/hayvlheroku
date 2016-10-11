@@ -1,0 +1,57 @@
+// cac loi ve token
+    101: valid token,
+    102: invalid token,
+    103: no token provided,
+    104: you are not admin,
+    105: day la bai post cua ban
+    106: day ko phai bai post cua ban
+    107: co loi xay ra tren server
+    108: ban bi cam
+// cac loi ve list cac user
+    201: lay duoc data
+    202: co loi xay ra tren server
+
+    211: da create duoc user moi,
+    212: co loi xay ra tren server: tra 1 ve field chua cac truong bi loi
+
+    221: da xoa duoc user
+    222: co loi xay ra khi xoa tren server  : tra ve message loi
+
+    231: band success,
+    232: band gap loi tren server : tra ve message loi
+
+// caca loi ve category
+    301: lay duoc data
+    302: co loi xay ra tren server
+
+    311: da category duoc user moi,
+    312: co loi xay ra tren server: tra 1 ve field chua cac truong bi loi
+
+    321: da xoa duoc category
+    322: co loi xay ra khi xoa tren server  : tra ve message loi
+
+    331: update success,
+    332: update gap loi tren server : tra ve message loi
+
+// cac loi ve POST
+    401: lay duoc data
+    402: co loi xay ra tren server
+
+    411: da POST duoc user moi,
+    412: co loi xay ra tren server: tra 1 ve field chua cac truong bi loi
+
+    421: da xoa duoc POST
+    422: co loi xay ra khi xoa tren server  : tra ve message loi
+
+    431: update success,
+    432: update gap loi tren server : tra ve message loi
+
+    441: load post theo category thanh cong
+    442:ko load dc post theo category
+
+    451:get dc post theo link
+    452: ko tim thay post
+    453: co loi tren server
+
+// Tra ve luowt view
+    551:tra ve so luot view thanhh cong

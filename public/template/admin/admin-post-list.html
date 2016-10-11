@@ -1,0 +1,63 @@
+<div ng-controller="adminPostList">
+	<h1>Trinh quan ly bai post</h1>
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			{{dropDownTitle}}
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			<li ng-click="load()"><a>Tat ca</a></li>
+			<li ng-repeat="listcate in listCategory"><a href=""  ng-click="loadPostWithCategory(listcate.id, listcate.title)">{{listcate.title}}</a></li>
+		</ul>
+	</div>
+	<div class="table-responsive2">
+		<table class="table table-hover table-striped">
+			<tr class="active">
+				<th >Ngay dang</th>
+				<th >Tieu de</th>
+				<th >Mo ta</th>
+				<th >Nguoi dang</th>
+				<th >Category</th>
+				<th >Chuc nang </th>
+			</tr>
+			<tr ng-repeat="post in posts">
+				<td><span class="label label-success">{{post.createdAt | date:"HH:mm-dd/MM/yyyy"}}</span></td>
+				<td>{{post.title}}</td>
+				<td>{{post.description}}</td>
+				<td><span class="label label-danger">{{post.username}}</span></td>
+				<td><span class="label label-primary">{{post.categoryTitle}}</span></td>
+				<td style="min-width: 175px">
+					<button class="alert alert-warning"  ng-click="editPost(post.id)">
+						<i class="fa fa-pencil-square" aria-hidden="true"></i>
+					</button>
+					<button class="alert alert-warning">
+						<i class="fa fa-eye" aria-hidden="true"></i>
+					</button>
+					<button class="alert alert-warning" ng-click="preDeletePost(post.id)" >
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="relative">
+		<pagging class total-items="totalAll" items-per-page="take" current-page="currentPage" change="changePage"></pagging>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalPostListNotify">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Thong bao</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert">{{notify.message}}</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" ng-if="notify.confirm" ng-click="preDeletePost(notify.confirm)">Xac nhan</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="notify.confirm=false">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+</div>

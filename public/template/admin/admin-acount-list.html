@@ -1,0 +1,128 @@
+<div  ng-controller="adminAcountList">
+	<div class="table-responsive2">
+		<table class="table">
+			<tr>
+				<th class="active">Username</th>
+				<th class="success">Quyen han</th>
+				<th class="danger">Ngay tao</th>
+				<th class="success">Trang thai</th>
+				<th class="info"></th>
+			</tr>
+			<tr ng-repeat="user in users">
+				<td class="active">{{user.username}}</td>
+				<td class="success">{{user.type}}</td>
+				<td class="danger">{{user.createdAt | date:"dd/MM/yyyy"}}</td>
+				<td class="success pointer" ng-click="changeStatus(!user.status,user.id)">
+					<span class="label label-success" ng-if="user.status">
+						<i class="fa fa-check" aria-hidden="true"></i>
+					</span>
+					<span class="label label-danger" ng-if="!user.status"> 
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</span>
+				</td>
+				<td class="info"><button type="button" class="btn btn-info" ng-click="showDetail(user.id)">Xem</button></td>
+			</tr>
+		</table>
+	</div>
+	<div class="relative">
+		<pagging class total-items="totalAll" items-per-page="take" current-page="currentPage" change="changePage"></pagging>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalUserDetail">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Chi tiet</h4>
+				</div>
+				<div class="modal-body modalUserDetail">
+					<h1>Thong tin ca nhan</h1>
+					<table class="table">
+						<tr>
+							<th class="active">
+								ID
+							</th>
+							<th class="info">	
+								{{userDetail.id}}
+							</th>
+						</tr>
+						<tr>
+							<th class="danger">
+								Username
+							</th>
+							<th class="success">
+								{{userDetail.username}}
+							</th>
+						</tr>
+						<tr>
+							<th class="success">Tuoi</th>
+							<th class="info">{{userDetail.age}}</th>
+						</tr>
+						<tr>
+							<th class="success">Gioi tinh</th>
+							<th class="info">{{userDetail.gender}}</th>
+						</tr>
+						<tr>
+							<th class="active">Email</th>
+							<th class="info">{{userDetail.email}}</th>
+						</tr>
+						<tr>
+							<th class="active">So dien thoai</th>
+							<th class="success">{{userDetail.telephone}}</th>
+						</tr>
+						<tr>
+							<th class="active">Quyen han</th>
+							<th class="success">{{userDetail.type}}</th>
+						</tr>
+						<tr>
+							<th class="danger">Trang thai</th>
+							<th class="info">
+								<span class="label label-success" ng-if="userDetail.status">
+									<i class="fa fa-check" aria-hidden="true"></i>
+								</span>
+								<span class="label label-danger" ng-if="!userDetail.status"> 
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</span>
+							</th>
+						</tr>
+						<tr>
+							<th class="active">Ngay tao</th>
+							<th class="success">{{userDetail.createdAt | date:"dd/MM/yyyy"}}</th>
+						</tr>
+						<tr>
+							<th class="active">Ngay cap nhat</th>
+							<th class="info">{{userDetail.updatedAt | date:"dd/MM/yyyy"}}</th>
+						</tr>
+						<tr>
+							<td class="danger">
+								<span class="label label-danger pointer" ng-click="prepareDeteteUser(userDetail.id)"> 
+									Xoa
+								</span>
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="modalUserNotify">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Thong bao</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert">{{notify.message}}</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal" ng-if="notify.confirm" ng-click="deleteUser(notify.confirm)">Xac nhan</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
